@@ -1,13 +1,17 @@
 import React from 'react';
-import {View, Text, Image} from 'react-native';
-import {Container, Label, IconLabel} from './../components';
+import {View, Image} from 'react-native';
+import {Container, Label, IconLabel, Button, Icon} from './../components';
 
 class HomeScreen extends React.Component {
+  navigateScreen = screenName => {
+    this.props.navigation.navigate(screenName);
+  };
+
   render() {
     return (
       <Container style={styles.wrapper}>
         {this.renderTopBar()}
-        <Text>Home Screen</Text>
+        {this.renderBottomBar()}
       </Container>
     );
   }
@@ -42,6 +46,28 @@ class HomeScreen extends React.Component {
             />
           </View>
         </View>
+      </View>
+    );
+  };
+
+  renderBottomBar = () => {
+    return (
+      <View style={styles.bottomBarWrapper}>
+        <Button
+          onPress={() => this.navigateScreen('Setting')}
+          iconName="gear"
+          style={styles.iconBtn}
+        />
+        <Button
+          onPress={() => this.navigateScreen('Shop')}
+          iconName="shopping-cart"
+          style={styles.iconBtn}
+        />
+        <Button
+          onPress={() => this.navigateScreen('Support')}
+          iconName="bookmark-o"
+          style={styles.iconBtn}
+        />
       </View>
     );
   };
@@ -96,6 +122,16 @@ const styles = {
   coinIcon: {
     width: 30,
     height: 30,
+  },
+  bottomBarWrapper: {
+    bottom: 80,
+    position: 'absolute',
+    flexDirection: 'row',
+    padding: 30,
+    justifyContent: 'space-around',
+  },
+  iconBtn: {
+    flex: 1,
   },
 };
 

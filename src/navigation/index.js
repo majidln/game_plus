@@ -16,7 +16,7 @@ const AppNavigator = createStackNavigator({
   Support: {
     screen: SupportScreen,
   },
-  setting: {
+  Setting: {
     screen: SettingScreen,
   },
 });
