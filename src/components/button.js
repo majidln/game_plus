@@ -4,12 +4,12 @@ import {Label, Icon} from './index';
 
 export class Button extends Component {
   render() {
-    const {label, onPress, iconName, style} = this.props;
+    const {label, onPress, iconName, style, labelStyle} = this.props;
     return (
       <TouchableOpacity
         onPress={() => onPress && onPress()}
         style={[styles.wrapper, style || {}]}>
-        <Label>{label || ''}</Label>
+        <Label style={labelStyle || {}}>{label || ''}</Label>
         {this.renderIcon(iconName)}
       </TouchableOpacity>
     );

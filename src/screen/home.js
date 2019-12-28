@@ -1,6 +1,7 @@
 import React from 'react';
 import {View, Image} from 'react-native';
-import {Container, Label, IconLabel, Button, Icon} from './../components';
+import {Container, Label, IconLabel, Button} from './../components';
+import theme from './../services/theme'
 
 class HomeScreen extends React.Component {
   navigateScreen = screenName => {
@@ -11,6 +12,7 @@ class HomeScreen extends React.Component {
     return (
       <Container style={styles.wrapper}>
         {this.renderTopBar()}
+        {this.renderStartButton()}
         {this.renderBottomBar()}
       </Container>
     );
@@ -50,6 +52,18 @@ class HomeScreen extends React.Component {
     );
   };
 
+  renderStartButton = () => {
+    return (
+      <View style={styles.startBtnWrapper}>
+        <Button
+          style={styles.startBtn}
+          labelStyle={styles.startBtnLabel}
+          label="Start Game"
+        />
+      </View>
+    );
+  };
+
   renderBottomBar = () => {
     return (
       <View style={styles.bottomBarWrapper}>
@@ -80,7 +94,7 @@ class HomeScreen extends React.Component {
 const styles = {
   wrapper: {
     flex: 1,
-    backgroundColor: '#3446A2',
+    backgroundColor: theme.base,
   },
   topBarWrapper: {
     padding: 20,
@@ -89,7 +103,7 @@ const styles = {
     justifyContent: 'space-between',
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: '#279453',
+    backgroundColor: theme.secondary,
     borderRadius: 30,
     padding: 5,
   },
@@ -122,6 +136,20 @@ const styles = {
   coinIcon: {
     width: 30,
     height: 30,
+  },
+  startBtnWrapper: {
+    padding: 20,
+    bottom: 200,
+    position: 'absolute',
+    width: '100%',
+  },
+  startBtn: {
+    backgroundColor: theme.secondary,
+    padding: 20,
+    borderRadius: 30,
+  },
+  startBtnLabel: {
+    color: 'white',
   },
   bottomBarWrapper: {
     bottom: 80,
